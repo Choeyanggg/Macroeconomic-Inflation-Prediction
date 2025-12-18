@@ -1,155 +1,113 @@
-Macroeconomic Inflation Modeling & Prediction
-
+# Macroeconomic Inflation Modeling & Prediction  
 Machine Learning & Time-Series Analysis (India)
 
-This repository contains Python code and a comprehensive analysis of macroeconomic inflation dynamics in India using RBI time-series data. The project combines exploratory data analysis, time-series feature engineering, supervised learning, and unsupervised clustering to forecast near-term inflation and identify structural inflation regimes.
+This repository contains Python code and a comprehensive analysis of **macroeconomic inflation dynamics in India** using RBI time-series data. The project applies **exploratory data analysis, time-series feature engineering, supervised learning, and unsupervised clustering** to predict near-term inflation and uncover structural inflation regimes.
 
-Project Objectives
-Inflation Trend Analysis
+---
 
-Analyze historical CPI inflation trends using monthly RBI data.
+## Project Objectives
 
-Study inflation persistence through lagged variables and rolling averages.
+### Inflation Trend Analysis
+- Analyze historical CPI inflation trends using monthly RBI data.
+- Examine inflation persistence through lagged variables and rolling averages.
 
-Macroeconomic Indicator Analysis
+### Macroeconomic Indicator Analysis
+- Study the relationship between inflation and key macroeconomic variables:
+  - Money Supply (M3 Growth)
+  - Exchange Rate (USD/INR)
+  - Index of Industrial Production (IIP Growth)
+  - Interest Rates (Call Money Rate)
 
-Examine the relationship between inflation and key macro variables such as:
+### Inflation Prediction
+- Forecast **near-term inflation** by predicting the **three-month rolling average of CPI inflation**.
+- Apply supervised machine learning models for short-term inflation forecasting.
 
-Money supply (M3 growth)
+### Inflation Regime Identification
+- Identify distinct inflation regimes (low, moderate, high) using unsupervised learning.
+- Analyze regime persistence and structural shifts in inflation behavior.
 
-Exchange rate (USD/INR)
+---
 
-Industrial activity (IIP growth)
+## Dataset
 
-Interest rates (Call Money Rate)
+**Source:** Reserve Bank of India (RBI)  
+**Frequency:** Monthly
 
-Inflation Prediction
+The dataset contains macroeconomic indicators including:
 
-Forecast near-term inflation by predicting the three-month rolling average of CPI inflation.
-
-Evaluate supervised machine learning models for short-term inflation forecasting.
-
-Inflation Regime Identification
-
-Identify distinct inflation regimes (low, moderate, high) using unsupervised learning.
-
-Analyze regime persistence and structural differences in inflation behavior.
-
-Dataset
-
-Source: Reserve Bank of India (RBI)
-Frequency: Monthly macroeconomic time-series data
-
-The dataset includes the following variables:
-
-Date: Observation month
-
-Inflation_Rate: CPI inflation (%)
-
-M3_Growth: Money supply growth (%)
-
-USD_INR: Exchange rate (INR per USD)
-
-IIP_Growth: Index of Industrial Production growth (%)
-
-Call_Money_Rate: Weighted average call money rate (%)
+- `Date`: Observation month  
+- `Inflation_Rate`: CPI inflation (%)  
+- `M3_Growth`: Money supply growth (%)  
+- `USD_INR`: Exchange rate (INR per USD)  
+- `IIP_Growth`: Industrial production growth (%)  
+- `Call_Money_Rate`: Weighted average call money rate (%)  
 
 Derived features:
+- Lagged inflation variables
+- Lagged macroeconomic indicators
+- Three-month rolling average of inflation (target variable)
 
-Lagged inflation variables
+---
 
-Lagged macroeconomic indicators
+## Methodology
 
-3-month rolling average of inflation (target variable)
+### Exploratory Data Analysis (EDA)
+- Inflation trend visualization
+- Correlation heatmaps
+- Distribution analysis
+- Multicollinearity inspection
 
-Methodology
-Exploratory Data Analysis (EDA)
+### Feature Engineering
+- Lag-based features to capture inflation persistence
+- Rolling averages to smooth short-term volatility
+- Feature standardization for clustering and ML models
 
-Trend analysis of CPI inflation
+### Supervised Learning (Inflation Prediction)
+**Models Used:**
+- Random Forest Regressor
+- XGBoost Regressor
 
-Correlation heatmaps and multicollinearity checks
+**Target Variable:**
+- Three-month rolling average of CPI inflation
 
-Distribution analysis of macroeconomic variables
+**Forecast Results:**
+- Random Forest predicted next 3-month average inflation ≈ **2.78%**
+- XGBoost predicted next 3-month average inflation ≈ **3.15%**
 
-Visualization of inflation behavior over time
+### Unsupervised Learning (Inflation Regime Analysis)
+**Techniques Used:**
+- K-Means Clustering
+- Hierarchical Clustering
 
-Feature Engineering
+**Validation Methods:**
+- Elbow Method (WCSS)
+- Dendrogram analysis
 
-Lag-based features to capture inflation persistence
+**Outcome:**
+- Identification of structurally distinct inflation regimes
+- Evidence of regime persistence over time
 
-Rolling averages to smooth short-term noise
+---
 
-Standardization of features for clustering and ML models
+## Key Findings
 
-Supervised Learning (Inflation Prediction)
+- Inflation shows strong **temporal persistence**, making lagged features critical.
+- Short-term inflation forecasting improves using smoothed (rolling average) targets.
+- Inflation behavior is **regime-dependent**, varying across economic conditions.
+- Combining supervised prediction with regime analysis enhances interpretability.
 
-Models Used:
+---
 
-Random Forest Regressor
+## Tools and Libraries Used
 
-XGBoost Regressor
+- pandas
+- numpy
+- matplotlib
+- seaborn
+- scikit-learn
+- xgboost
 
-Target Variable:
+---
 
-Three-month rolling average of CPI inflation
+## Project Structure
 
-Forecast Results:
-
-Random Forest predicted next 3-month average inflation ≈ 2.78%
-
-XGBoost predicted next 3-month average inflation ≈ 3.15%
-
-Unsupervised Learning (Regime Analysis)
-
-Techniques Used:
-
-K-Means Clustering
-
-Hierarchical Clustering
-
-Validation Tools:
-
-Elbow Method (WCSS)
-
-Dendrogram analysis
-
-Outcome:
-
-Identification of distinct inflation regimes
-
-Evidence of regime persistence and structural shifts
-
-Key Findings
-
-Inflation exhibits strong temporal persistence, making lag-based features critical for forecasting.
-
-Short-term inflation prediction benefits from modeling smoothed trends rather than single-month values.
-
-Inflation behavior is regime-dependent, varying across economic phases.
-
-Combining supervised prediction with regime analysis improves interpretability and economic insight.
-
-Tools and Libraries Used
-
-Python
-
-pandas
-
-numpy
-
-matplotlib
-
-seaborn
-
-scikit-learn
-
-xgboost
-
-Project Structure
-├── inflation_analysis.ipynb      # Jupyter notebook with EDA, modeling, and visualizations
-├── rbi_macro_data.xlsx           # RBI macroeconomic dataset
-└── README.md                     # Project documentation
-
-Conclusion
-
-This project demonstrates how machine learning and time-series analysis can be applied to macroeconomic data to improve inflation forecasting and interpretation. Rather than focusing solely on model accuracy, the analysis emphasizes inflation persistence, structural regimes, and economic interpretability, providing a more realistic approach to macroeconomic forecasting.
